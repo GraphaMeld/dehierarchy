@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boutique | De Hierarchy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="division-page boutique-page">
+  <header class="division-page-header">
+    <nav class="division-nav">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.svg" alt="Hierarchy logo" class="site-logo-img" />
+        <span class="nav-logo-text">DE HIERARCHY</span>
+      </a>
+      <ul class="division-nav-links">
+        <li><a href="index.html#boutique">Home</a></li>
+        <li><a href="livestock.html">Livestock</a></li>
+        <li><a href="solar.html">Solar</a></li>
+        <li><a href="scholars.html">Scholars</a></li>
+      </ul>
+    </nav>
+
+    <div class="division-hero reveal">
+      <div class="division-icon-wrap">
+        <img src="assets/boutique icon.svg" alt="Boutique icon" class="division-icon" />
+      </div>
+      <p class="division-kicker">Division I</p>
+      <h1>Boutique</h1>
+      <p class="division-summary">An elegant, private luxury division for signature fashion, bespoke tailoring, and elevated lifestyle experiences designed for discerning clients.</p>
+      <div class="division-stats">
+        <div><strong>₦2.4B</strong><span>Annual Revenue</span></div>
+        <div><strong>72 hrs</strong><span>Tailoring Turnaround</span></div>
+        <div><strong>Bi-Annual</strong><span>Collection Drops</span></div>
+      </div>
+      <a href="index.html#contact" class="button">Book a Private Consultation</a>
+    </div>
+  </header>
+
+  <main class="division-shell">
+    <section class="division-card reveal">
+      <h2>Crafted for distinction</h2>
+      <p>Hierarchy Boutique combines artistic direction, precision tailoring, and cultural storytelling to produce garments and objects that feel personal, rare, and timeless.</p>
+      <ul class="division-list">
+        <li>Limited-edition ready-to-wear collections</li>
+        <li>Private fittings and concierge styling</li>
+        <li>Accessories, fragrance, and signature objects</li>
+      </ul>
+    </section>
+
+    <section class="division-grid">
+      <article class="division-card reveal">
+        <h3>Signature Services</h3>
+        <p>From ceremonial wear to contemporary executive styling, every piece is tailored to the client’s language of identity.</p>
+      </article>
+      <article class="division-card reveal">
+        <h3>Client Experience</h3>
+        <p>Every appointment is curated with discretion, cultural intelligence, and a refined sense of pace and presentation.</p>
+      </article>
+      <article class="division-card reveal">
+        <h3>Next Release</h3>
+        <p>Our next capsule explores heritage textiles, sculptural tailoring, and modern ceremonial elegance.</p>
+      </article>
+    </section>
+
+    <section class="division-card reveal">
+      <h2>Request a private preview</h2>
+      <p>Share your preferred style, event, or collection interest and our team will arrange a private preview experience.</p>
+      <form class="order-form division-form">
+        <label>Full name<input type="text" name="name" required /></label>
+        <label>Email address<input type="email" name="email" required /></label>
+        <label>Interest<select name="interest">
+          <option value="bespoke">Bespoke Tailoring</option>
+          <option value="collection">Collection Preview</option>
+          <option value="accessories">Accessories</option>
+        </select></label>
+        <label>Notes<textarea name="notes" placeholder="Tell us what you’re looking for."></textarea></label>
+        <button class="order-submit" type="submit">Request Preview</button>
+        <div class="order-success">Thanks — your boutique request has been received.</div>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

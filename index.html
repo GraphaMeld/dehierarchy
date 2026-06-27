@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>De Hierarchy — Boutique · Livestock · Solar · One-Time Success scholar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- SVG filters (invisible) -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <filter id="icon-stroke">
+        <feMorphology in="SourceAlpha" operator="dilate" radius="0.9" result="D"/>
+        <feFlood flood-color="#E6E7F9" flood-opacity="0.95" result="C"/>
+        <feComposite in="C" in2="D" operator="in" result="outline"/>
+        <feGaussianBlur in="outline" stdDeviation="0.2" result="softOutline"/>
+        <feMerge>
+          <feMergeNode in="softOutline"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo" data-section="hero" data-path="/">
+      <img src="assets/logo.svg" alt="Hierarchy logo" class="site-logo-img" />
+      <span class="nav-logo-text">DE HIERARCHY</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#boutique" data-section="boutique" data-path="/Boutique">Boutique</a></li>
+      <li><a href="#livestock" data-section="livestock" data-path="/Livestock">Livestock</a></li>
+      <li><a href="#solar" data-section="solar" data-path="/Solar">Solar</a></li>
+      <li><a href="#one-time-success-scholars" data-section="one-time-success-scholars" data-path="/Scholars">Scholars</a></li>
+      <li><a href="#contact" data-section="contact" data-path="/Contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-rule"></div>
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="assets/logo.svg" alt="Hierarchy logo" />
+      </div>
+      <h1>DE HIERARCHY</h1>
+      <p class="hero-eyebrow">— A House of Ventures</p>
+      <p class="hero-tagline">Four distinct empires. One sovereign standard.<br>Fashion, land, light, and legacy — curated at the highest level.</p>
+      <div class="hero-divisions">
+        <a href="#boutique" class="hero-pill" data-section="boutique" data-path="/Boutique">Boutique</a>
+        <a href="#livestock" class="hero-pill" data-section="livestock" data-path="/Livestock">Livestock</a>
+        <a href="#solar" class="hero-pill" data-section="solar" data-path="/Solar">Solar</a>
+        <a href="#one-time-success-scholars" class="hero-pill" data-section="one-time-success-scholars" data-path="/Scholars">Scholars</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- BOUTIQUE -->
+  <section class="division" id="boutique">
+    <div class="div-visual">
+      <div class="div-icon-bg"></div>
+      <div class="div-icon-wrap reveal">
+        <div class="div-icon">
+          <img src="assets/boutique icon.svg" alt="Boutique icon" width="52" height="52" />
+        </div>
+        <div>
+          <div class="div-stat">₦2.4B</div>
+          <div class="div-stat-label">Annual Revenue</div>
+        </div>
+      </div>
+    </div>
+    <div class="div-content reveal">
+      <p class="div-eyebrow">Division I</p>
+      <h2 class="div-title">Boutique</h2>
+      <p class="div-body">Where artisanship meets authority. Hierarchy Boutique curates and produces high-end fashion, accessories, and lifestyle goods for those who understand that clothing is the first language of power.</p>
+      <div class="div-features">
+        <div class="div-feature">
+          <div class="div-feature-dot"></div>
+          <span>Exclusive ready-to-wear collections for men and women, released bi-annually</span>
+        </div>
+        <div class="div-feature">
+          <div class="div-feature-dot"></div>
+          <span>Bespoke tailoring services with master craftspeople and 72-hour turnaround</span>
+        </div>
+        <div class="div-feature">
+          <div class="div-feature-dot"></div>
+          <span>Luxury accessories, fragrances, and home objects under the Hierarchy mark</span>
+        </div>
+      </div>
+      <a href="boutique.html" class="div-cta">
+        Explore Boutique
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <form class="order-form" data-division="Boutique">
+        <label>Full name<input type="text" name="name" required></label>
+        <label>Email address<input type="email" name="email" required></label>
+        <label>Phone number<input type="tel" name="phone"></label>
+        <label>Item / Notes<textarea name="notes" placeholder="What would you like to order?"></textarea></label>
+        <button class="order-submit" type="submit">Place Order</button>
+        <div class="order-success">Thanks — your order request has been received.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- LIVESTOCK -->
+  <section class="division" id="livestock">
+    <div class="div-visual">
+      <div class="div-icon-bg"></div>
+      <div class="div-icon-wrap reveal">
+        <div class="div-icon">
+          <img src="assets/livestock icon.svg" alt="Livestock icon" width="66" height="66" />
+        </div>
+        <div>
+          <div class="div-stat">12,000+</div>
+          <div class="div-stat-label">Head of Premium Stock</div>
+        </div>
+      </div>
+    </div>
+    <div class="div-content reveal">
+      <p class="div-eyebrow">Division II</p>
+      <h2 class="div-title">Livestock</h2>
+      <p class="div-body">The land does not lie. Hierarchy Livestock manages premium breeding farms, sustainable grazing programs, and direct-to-market supply chains that feed Nigeria's growing demand for quality protein.</p>
+      <div class="div-features">
+        <div class="div-feature">
+          <div class="div-feature-dot"></div>
+          <span>Cattle, goat, and sheep breeding with certified genetic lines for maximum yield</span>
+        </div>
+        <div class="div-feature">
+          <div class="div-feature-dot"></div>
+          <span>Veterinary-supervised rotational grazing across 8,000 hectares of managed land</span>
+        </div>
+        <div class="div-feature">
+          <div class="div-feature-dot"></div>
+          <span>Cold-chain logistics and abattoir partnerships for farm-to-table delivery</span>
+        </div>
+      </div>
+      <a href="livestock.html" class="div-cta">
+        Explore Livestock
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <form class="order-form" data-division="Livestock">
+        <label>Full name<input type="text" name="name" required></label>
+        <label>Email address<input type="email" name="email" required></label>
+        <label>Phone number<input type="tel" name="phone"></label>
+        <label>Stock requested<select name="stockType">
+          <option value="cattle">Cattle</option>
+          <option value="goat">Goat</option>
+          <option value="sheep">Sheep</option>
+        </select></label>
+        <button class="order-submit" type="submit">Place Order</button>
+        <div class="order-success">Thanks — your order request has been received.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- SOLAR -->
+  <section class="division" id="solar">
+    <div class="div-visual">
+      <div class="div-icon-bg"></div>
+      <div class="div-icon-wrap reveal">
+        <div class="div-icon">
+          <img src="assets/solar icon.svg" alt="Solar icon" width="76" height="76" />
+        </div>
+        <div>
+          <div class="div-stat">480 MW</div>
+          <div class="div-stat-label">Installed Capacity</div>
+        </div>
+      </div>
+    </div>
+    <div class="div-content reveal">
+      <p class="div-eyebrow">Division III</p>
+      <h2 class="div-title">Solar</h2>
+      <p class="div-body">Energy is sovereignty.  designs, installs, and maintains photovoltaic systems for residential, commercial, and industrial clients — delivering reliable power where the grid falls short.</p>
+      <div class="div-features">
+        <div class="div-feature">
+          <div class="div-feature-dot"></div>
+          <span>Custom solar installations from 1.5 kW residential to 50 MW commercial projects</span>
+        </div>
+        <div class="div-feature">
+          <div class="div-feature-dot"></div>
+          <span>Hybrid battery storage systems with 24/7 remote monitoring and smart switching</span>
+        </div>
+        <div class="div-feature">
+          <div class="div-feature-dot"></div>
+          <span>End-to-end project management with a 25-year panel performance guarantee</span>
+        </div>
+      </div>
+      <a href="solar.html" class="div-cta">
+        Explore Solar
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <form class="order-form" data-division="Solar">
+        <label>Full name<input type="text" name="name" required></label>
+        <label>Email address<input type="email" name="email" required></label>
+        <label>Phone number<input type="tel" name="phone"></label>
+        <label>Project size<select name="projectSize">
+          <option value="residential">Residential (1-10 kW)</option>
+          <option value="commercial">Commercial (10-100 kW)</option>
+          <option value="industrial">Industrial (100 kW+)</option>
+        </select></label>
+        <label>Notes<textarea name="notes" placeholder="Project details, location, timeline"></textarea></label>
+        <button class="order-submit" type="submit">Request Quote</button>
+        <div class="order-success">Thanks — your quote request has been received.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ONE-TIME SUCCESS SCHOLARS -->
+  <section class="division" id="one-time-success-scholars">
+    <div class="div-visual">
+      <div class="div-icon-bg"></div>
+      <div class="div-icon-wrap reveal">
+        <div class="div-icon">
+          <img src="assets/education icon.svg" alt="Education icon" width="76" height="76" />
+        </div>
+        <div>
+          <div class="div-stat">1,000+</div>
+          <div class="div-stat-label">Success Awards</div>
+        </div>
+      </div>
+    </div>
+    <div class="div-content reveal">
+      <p class="div-eyebrow">Division IV</p>
+      <h2 class="div-title">One-Time Success Scholars</h2>
+      <p class="div-body">A singular entry into the peerless world of high-performance legacy building. One-Time Success Scholars offers a one-off immersion in strategy, network access, and personal elevation for the most ambitious creators and founders.</p>
+      <div class="div-features">
+        <div class="div-feature">
+          <div class="div-feature-dot"></div>
+          <span>One-time mentorship sessions with founders, investors, and legacy leaders</span>
+        </div>
+        <div class="div-feature">
+          <div class="div-feature-dot"></div>
+          <span>High-impact activation plans tailored to your business, brand, or personal ascent</span>
+        </div>
+        <div class="div-feature">
+          <div class="div-feature-dot"></div>
+          <span>Curated introductions to strategic partners, markets, and capital sources</span>
+        </div>
+      </div>
+      <a href="scholars.html" class="div-cta">
+        Explore Scholars
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <form class="order-form" data-division="Scholars">
+        <label>Full name<input type="text" name="name" required></label>
+        <label>Email address<input type="email" name="email" required></label>
+        <label>Phone number<input type="tel" name="phone"></label>
+        <label>Program interest<select name="interest">
+          <option value="mentorship">Mentorship Session</option>
+          <option value="strategy-plan">Strategy Plan</option>
+          <option value="network-intro">Network Introduction</option>
+        </select></label>
+        <label>Notes<textarea name="notes" placeholder="Tell us your ambition and goals."></textarea></label>
+        <button class="order-submit" type="submit">Apply Now</button>
+        <div class="order-success">Thanks — your application has been received.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-top">
+      <div>
+        <p class="footer-col-title">Boutique</p>
+        <ul class="footer-links">
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">Bespoke Tailoring</a></li>
+          <li><a href="#">Accessories</a></li>
+          <li><a href="#">Flagship Stores</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Livestock</p>
+        <ul class="footer-links">
+          <li><a href="#">Breeding Programs</a></li>
+          <li><a href="#">Farm Locations</a></li>
+          <li><a href="#">Bulk Orders</a></li>
+          <li><a href="#">Partnerships</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Solar</p>
+        <ul class="footer-links">
+          <li><a href="#">Residential</a></li>
+          <li><a href="#">Commercial</a></li>
+          <li><a href="#">Industrial</a></li>
+          <li><a href="#">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Scholars</p>
+        <ul class="footer-links">
+          <li><a href="#">Mentorship</a></li>
+          <li><a href="#">Strategy Plans</a></li>
+          <li><a href="#">Network Access</a></li>
+          <li><a href="#">Exclusive Application</a></li>
+        </ul>
+      </div>
+      <div>
+        <a href="/" class="nav-logo footer-brand-logo" data-section="hero" data-path="/">
+            <img src="assets/logo.svg" alt="Hierarchy logo" class="site-logo-img" />
+            <span class="nav-logo-text">DE HIERARCHY</span>
+          </a>
+        <p class="footer-brand-desc">A sovereign house of ventures spanning fashion, agriculture, and renewable energy. Built for those who lead at every level.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 De <strong>Hierarchy.</strong> All rights reserved.</span>
+      <span>Boutique · Livestock · Solar · Scholars</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

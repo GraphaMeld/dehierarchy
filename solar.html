@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solar | De Hierarchy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="division-page solar-page">
+  <header class="division-page-header">
+    <nav class="division-nav">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.svg" alt="Hierarchy logo" class="site-logo-img" />
+        <span class="nav-logo-text">DE HIERARCHY</span>
+      </a>
+      <ul class="division-nav-links">
+        <li><a href="index.html#solar">Home</a></li>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="livestock.html">Livestock</a></li>
+        <li><a href="scholars.html">Scholars</a></li>
+      </ul>
+    </nav>
+
+    <div class="division-hero reveal">
+      <div class="division-icon-wrap">
+        <img src="assets/solar icon.svg" alt="Solar icon" class="division-icon" />
+      </div>
+      <p class="division-kicker">Division III</p>
+      <h1>Solar</h1>
+      <p class="division-summary">A full-spectrum energy division delivering resilient solar systems, storage solutions, and long-term performance management for homes, businesses, and industry.</p>
+      <div class="division-stats">
+        <div><strong>480 MW</strong><span>Installed Capacity</span></div>
+        <div><strong>25 yrs</strong><span>Panel Performance Guarantee</span></div>
+        <div><strong>24/7</strong><span>Remote Monitoring</span></div>
+      </div>
+      <a href="index.html#contact" class="button">Request a Solar Quote</a>
+    </div>
+  </header>
+
+  <main class="division-shell">
+    <section class="division-card reveal">
+      <h2>Powering the next phase</h2>
+      <p>Hierarchy Solar designs resilient energy infrastructure that blends smart engineering, efficient deployment, and dependable maintenance for every project size.</p>
+      <ul class="division-list">
+        <li>Residential and commercial solar systems</li>
+        <li>Battery backup and hybrid setups</li>
+        <li>Project management from design to deployment</li>
+      </ul>
+    </section>
+
+    <section class="division-grid">
+      <article class="division-card reveal">
+        <h3>System Design</h3>
+        <p>Each installation is tailored to load profile, site conditions, and future expansion needs.</p>
+      </article>
+      <article class="division-card reveal">
+        <h3>Energy Storage</h3>
+        <p>Backup systems provide continuity and smarter use of generated power during peak demand or outages.</p>
+      </article>
+      <article class="division-card reveal">
+        <h3>Aftercare</h3>
+        <p>Monitoring, maintenance, and performance reporting keep systems efficient for years to come.</p>
+      </article>
+    </section>
+
+    <section class="division-card reveal">
+      <h2>Start your energy project</h2>
+      <p>Tell us your energy goal and site details, and our team will prepare a tailored plan and quote.</p>
+      <form class="order-form division-form">
+        <label>Full name<input type="text" name="name" required /></label>
+        <label>Email address<input type="email" name="email" required /></label>
+        <label>Project type<select name="projectType">
+          <option value="residential">Residential</option>
+          <option value="commercial">Commercial</option>
+          <option value="industrial">Industrial</option>
+        </select></label>
+        <label>Notes<textarea name="notes" placeholder="Location, estimated load, and timeline."></textarea></label>
+        <button class="order-submit" type="submit">Request Quote</button>
+        <div class="order-success">Thanks — your solar request has been received.</div>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
