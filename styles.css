@@ -103,9 +103,9 @@ nav.nav-hidden {
 #hero {
   min-height: 100vh;
   display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  align-items: center; justify-content: flex-start;
   text-align: center;
-  padding: 0 2rem;
+  padding: 0 2rem 2rem;
   position: relative;
   overflow: hidden;
 }
@@ -123,6 +123,8 @@ nav.nav-hidden {
 .hero-content {
   position: relative; z-index: 2;
   display: flex; flex-direction: column; align-items: center;
+  margin-top: 5rem;
+  padding-top: 1.6rem;
 }
 .hero-logo {
   opacity: 0;
