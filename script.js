@@ -67,15 +67,47 @@ window.addEventListener('load', () => {
   }
 });
 
-// Order form handling (simple client-side behavior)
+function buildWhatsAppMessage(form, data) {
+  const labels = {
+    name: 'Name',
+    email: 'Email',
+    phone: 'Phone',
+    notes: 'Notes',
+    stockType: 'Stock requested',
+    projectSize: 'Project size',
+    interest: 'Interest',
+    category: 'Category',
+    projectType: 'Project type',
+    focus: 'Focus'
+  };
+
+  const lines = ['New inquiry from De Hierarchy'];
+  const division = data.division || form.dataset.division || 'General';
+  lines.push(`Division: ${division}`);
+
+  Object.entries(data).forEach(([key, value]) => {
+    if (!value) return;
+    const label = labels[key] || key.replace(/([A-Z])/g, ' $1').replace(/^./, (c) => c.toUpperCase());
+    lines.push(`${label}: ${value}`);
+  });
+
+  return lines.join('\n');
+}
+
+// Order form handling: send inquiries to WhatsApp
+const whatsappNumber = '2349056791476';
 document.querySelectorAll('.order-form').forEach(form => {
   form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
     const data = Object.fromEntries(new FormData(form));
     data.division = form.dataset.division || '';
-    // Simulate submission: log and show success
-    console.log('Order submission', data);
-    form.querySelector('.order-success').style.display = 'block';
+
+    const message = buildWhatsAppMessage(form, data);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
+    const success = form.querySelector('.order-success');
+    if (success) success.style.display = 'block';
     form.reset();
   });
 });
