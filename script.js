@@ -162,9 +162,17 @@ document.querySelectorAll('.order-form').forEach(form => {
     const data = Object.fromEntries(new FormData(form));
     data.division = form.dataset.division || '';
 
-    const message = buildWhatsAppMessage(form, data);
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    const emailRecipient = form.dataset.email;
+    if (emailRecipient) {
+      const subject = `Contact request from ${data.name || 'Website Visitor'}`;
+      const body = [`Name: ${data.name || ''}`, `Email: ${data.email || ''}`, `Address: ${data.address || ''}`, `Phone: ${data.phone || ''}`, `Message: ${data.notes || ''}`].join('\n');
+      const mailtoUrl = `mailto:${encodeURIComponent(emailRecipient)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoUrl;
+    } else {
+      const message = buildWhatsAppMessage(form, data);
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    }
 
     const success = form.querySelector('.order-success');
     if (success) success.style.display = 'block';

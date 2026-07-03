@@ -39,29 +39,14 @@ body {
   opacity: 0.95;
 }
 
-.site-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  z-index: 110;
-  background: rgba(30, 33, 49, 0.95);
-  color: var(--ivory);
-  padding: 0.75rem 1rem;
-  font-size: 0.95rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  opacity: 0.95;
-}
-
 .site-banner__track {
   display: inline-flex;
   white-space: nowrap;
-  animation: slideHoriz 20s linear infinite;
+  animation: slideHoriz 24s linear infinite;
 }
 
 .site-banner__track span {
+  display: inline-block;
   margin-right: 3rem;
 }
 
