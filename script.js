@@ -37,8 +37,13 @@ function navigateTo(sectionId, path, push = true) {
 // Attach click handlers to links that have data-section / data-path
 document.querySelectorAll('[data-section]').forEach(a => {
   a.addEventListener('click', (ev) => {
+    const href = a.getAttribute('href') || '';
+    if (href.includes('.html') || href.startsWith('mailto:') || href.startsWith('tel:') || (href && !href.startsWith('#'))) {
+      return;
+    }
     ev.preventDefault();
     const section = a.dataset.section;
+    if (!section) return;
     const path = a.dataset.path || ('/' + section.charAt(0).toUpperCase() + section.slice(1));
     navigateTo(section, path);
   });
@@ -52,6 +57,61 @@ window.addEventListener('popstate', (ev) => {
   if (match) match.scrollIntoView({ behavior: 'smooth', block: 'start' });
   updateActiveNavById(path);
 });
+
+// Mobile menu toggle
+const navToggles = document.querySelectorAll('.nav-toggle');
+navToggles.forEach(toggle => {
+  const menu = toggle.closest('.nav-menu');
+  const links = menu?.querySelector('.nav-links');
+  if (!links) return;
+
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  });
+
+  links.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (links.classList.contains('open')) {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+      }
+    });
+  });
+});
+
+// Move nav-menu into the hero title area on small screens
+(function () {
+  const movedFlag = 'data-nav-moved';
+  function moveMenus() {
+    const isMobile = window.innerWidth <= 900;
+    document.querySelectorAll('.division-nav .nav-menu').forEach(menu => {
+      const header = menu.closest('.division-page-header');
+      if (!header) return;
+      const hero = header.querySelector('.division-hero');
+      if (!hero) return;
+      if (isMobile && !menu.hasAttribute(movedFlag)) {
+        // store original parent
+        menu.dataset.originalParent = menu.parentNode ? Array.prototype.indexOf.call(menu.parentNode.children, menu) : '-1';
+        menu._origParent = menu.parentNode;
+        hero.appendChild(menu);
+        menu.setAttribute(movedFlag, 'true');
+      } else if (!isMobile && menu.hasAttribute(movedFlag)) {
+        // move back
+        if (menu._origParent) menu._origParent.appendChild(menu);
+        menu.removeAttribute(movedFlag);
+      }
+    });
+  }
+  window.addEventListener('load', moveMenus);
+  window.addEventListener('resize', () => {
+    // debounce
+    clearTimeout(window.__moveNavTimer);
+    window.__moveNavTimer = setTimeout(moveMenus, 120);
+  });
+})();
 
 // On load, respect pathname (e.g., /Boutique)
 window.addEventListener('load', () => {
