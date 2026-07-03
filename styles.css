@@ -699,7 +699,7 @@ footer {
 .division-icon {
   width: 96px;
   height: 96px;
-  padding: 1rem;
+  padding: 0.8rem;
   border-radius: 50%;
   background: rgba(230,231,249,0.14);
   border: 1px solid rgba(255,255,255,0.16);
@@ -707,6 +707,17 @@ footer {
   filter: drop-shadow(0 16px 40px rgba(201,168,76,0.2));
   transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
   animation: divisionIconGlow 3.6s ease-in-out infinite 0.6s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.division-icon img,
+.division-icon svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 .division-icon-wrap:hover .division-icon {
   transform: scale(1.03);
