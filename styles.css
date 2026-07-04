@@ -700,20 +700,33 @@ footer {
   gap: 0.6rem;
 }
 .division-nav .nav-menu .nav-toggle { display: none; }
+.division-nav .nav-menu .nav-links {
+  display: flex;
+  gap: 1.35rem;
+  align-items: center;
+}
+.division-nav .nav-menu .nav-links li {
+  display: inline-flex;
+}
 .division-nav-links {
   list-style: none;
   display: flex;
-  gap: 1.2rem;
-  flex-wrap: wrap;
+  gap: 1.35rem;
+  flex-wrap: nowrap;
 }
 .division-nav-links a {
-  color: rgba(230,231,249,0.8);
-  text-decoration: none;
-  font-size: 0.82rem;
-  letter-spacing: 0.16em;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: var(--ivory);
+  opacity: 0.72;
+  text-decoration: none;
+  transition: opacity 0.2s, color 0.2s;
 }
 .division-nav-links a:hover {
+  opacity: 1;
   color: var(--gold);
 }
 .division-hero {
