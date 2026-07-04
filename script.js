@@ -17,12 +17,17 @@ const navLinks = document.querySelectorAll('.nav-links a, .hero-pill, .div-cta')
 function updateActiveNavById(id) {
   navLinks.forEach(a => {
     const target = a.dataset.section || a.getAttribute('href').replace('#','');
-    if (target === id) {
+    const isActive = target === id;
+    if (isActive) {
       a.style.opacity = '1';
       a.style.color = 'var(--gold)';
+      a.classList.add('active-nav-link');
+      a.setAttribute('aria-current', 'page');
     } else {
       a.style.opacity = '0.72';
       a.style.color = '';
+      a.classList.remove('active-nav-link');
+      a.removeAttribute('aria-current');
     }
   });
 }

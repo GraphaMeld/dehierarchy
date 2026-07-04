@@ -166,6 +166,10 @@ footer .nav-logo {
     transform: translateX(0);
   }
 }
+@keyframes navLinkIntro {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
 @keyframes logoPulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.04); }
@@ -725,9 +729,43 @@ footer {
   text-decoration: none;
   transition: opacity 0.2s, color 0.2s;
 }
-.division-nav-links a:hover {
+.division-nav-links a:hover,
+.nav-links a:hover {
   opacity: 1;
   color: var(--gold);
+}
+
+.nav-links a.active-nav-link,
+.division-nav-links a.active-nav-link {
+  opacity: 1;
+  color: var(--gold);
+}
+
+/* Desktop-only nav link intro animation (staggered) */
+@media (min-width: 901px) {
+  .nav-links li a,
+  .division-nav-links li a {
+    opacity: 0;
+    transform: translateX(-10px);
+    animation-name: navLinkIntro;
+    animation-duration: 0.48s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+  .nav-links li:nth-child(1) a,
+  .division-nav-links li:nth-child(1) a { animation-delay: 0.18s; }
+  .nav-links li:nth-child(2) a,
+  .division-nav-links li:nth-child(2) a { animation-delay: 0.26s; }
+  .nav-links li:nth-child(3) a,
+  .division-nav-links li:nth-child(3) a { animation-delay: 0.34s; }
+  .nav-links li:nth-child(4) a,
+  .division-nav-links li:nth-child(4) a { animation-delay: 0.42s; }
+  .nav-links li:nth-child(5) a,
+  .division-nav-links li:nth-child(5) a { animation-delay: 0.50s; }
+  .nav-links li:nth-child(6) a,
+  .division-nav-links li:nth-child(6) a { animation-delay: 0.58s; }
+  .nav-links li:nth-child(7) a,
+  .division-nav-links li:nth-child(7) a { animation-delay: 0.66s; }
 }
 .division-hero {
   max-width: 860px;
