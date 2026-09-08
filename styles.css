@@ -203,8 +203,37 @@ nav.nav-hidden {
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
-              linear-gradient(160deg, #0A0E1A 60%, #111827 100%);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 62% 78% at 68% 18%, rgba(36,105,255,0.22), transparent 68%),
+    radial-gradient(ellipse 45% 58% at 18% 70%, rgba(124,58,237,0.16), transparent 72%),
+    linear-gradient(180deg, #11131c 0%, #0A0E1A 100%);
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: -18% -10%;
+  opacity: 0.7;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0 5.5%,
+      rgba(107,155,255,0.08) 6%,
+      rgba(36,105,255,0.2) 7.5%,
+      transparent 10.5% 15%),
+    linear-gradient(115deg, transparent 12%, rgba(124,58,237,0.2) 42%, rgba(107,155,255,0.14) 58%, transparent 82%);
+  filter: blur(22px) saturate(115%);
+  transform: skewX(-12deg) translateX(-5%);
+  animation: gradientBlinds 16s ease-in-out infinite alternate;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, transparent 54%, rgba(10,14,26,0.68) 100%);
+}
+@keyframes gradientBlinds {
+  0% { transform: skewX(-12deg) translateX(-8%) scale(1.04); }
+  100% { transform: skewX(-12deg) translateX(8%) scale(1.08); }
 }
 .hero-rule {
   position: absolute; top: 50%; left: 50%;
@@ -328,6 +357,31 @@ h1 span { color: var(--gold); }
   min-height: 100vh;
   display: grid; grid-template-columns: 1fr 1fr;
   position: relative; overflow: hidden;
+}
+.division::before,
+.division-shell::before,
+footer::before {
+  content: '';
+  position: absolute;
+  inset: -16% -10%;
+  pointer-events: none;
+  opacity: 0.38;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0 6%,
+      rgba(107,155,255,0.06) 7%,
+      rgba(36,105,255,0.16) 8.5%,
+      transparent 11% 16%),
+    radial-gradient(ellipse at 70% 20%, rgba(124,58,237,0.18), transparent 58%);
+  filter: blur(24px);
+  transform: skewX(-12deg) translateX(-5%);
+  animation: gradientBlinds 18s ease-in-out infinite alternate;
+}
+.division > *,
+.division-shell > *,
+footer > * {
+  position: relative;
+  z-index: 1;
 }
 .division:nth-child(even) { direction: rtl; }
 .division:nth-child(even) > * { direction: ltr; }
@@ -539,6 +593,8 @@ h1 span { color: var(--gold); }
 
 /* ─── FOOTER ─── */
 footer {
+  position: relative;
+  overflow: hidden;
   background: #06080F;
   border-top: 1px solid rgba(201,168,76,0.12);
   padding: 5rem 4rem 3rem;
@@ -679,6 +735,8 @@ footer {
   color: var(--ivory);
 }
 .division-page-header {
+  position: relative;
+  overflow: hidden;
   min-height: 72vh;
   padding: 0.8rem 2rem 1.6rem;
   display: flex;
@@ -686,6 +744,27 @@ footer {
   justify-content: flex-start;
   background: radial-gradient(circle at top left, rgba(201,168,76,0.16), transparent 34%),
               linear-gradient(140deg, rgba(17,16,31,0.95) 0%, rgba(10,14,26,0.98) 100%);
+}
+.division-page-header::before {
+  content: '';
+  position: absolute;
+  inset: -18% -10%;
+  pointer-events: none;
+  opacity: 0.48;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 6%, rgba(107,155,255,0.08) 7%, rgba(36,105,255,0.18) 8.5%, transparent 11% 16%),
+    radial-gradient(ellipse at 70% 10%, rgba(36,105,255,0.2), transparent 58%);
+  filter: blur(24px);
+  transform: skewX(-12deg) translateX(-5%);
+  animation: gradientBlinds 16s ease-in-out infinite alternate;
+}
+.division-page-header > * { position: relative; z-index: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg::before,
+  .division-page-header::before {
+    animation: none;
+  }
 }
 .division-nav {
   display: flex;
@@ -869,6 +948,8 @@ footer {
   text-transform: uppercase;
 }
 .division-shell {
+  position: relative;
+  overflow: hidden;
   padding: 2rem 2rem 4rem;
   max-width: 1180px;
   margin: 0 auto;
@@ -959,8 +1040,8 @@ nav { top: 2rem; padding: 1.1rem 4rem; background: rgba(5, 5, 49, 0.82); border-
 .nav-links a:hover, .nav-links a.active-nav-link { color: var(--yellow); }
 
 #hero { min-height: 94vh; padding-top: 2rem; background: var(--navy); align-items: flex-start; text-align: left; }
-.hero-bg { background: linear-gradient(90deg, rgba(5,5,49,0.98) 0%, rgba(5,5,49,0.84) 48%, rgba(5,5,49,0.3) 100%), radial-gradient(circle at 82% 42%, rgba(250,245,18,0.26), transparent 24%), linear-gradient(135deg, #050531 0%, #15154C 100%); }
-.hero-bg::after { content: ''; position: absolute; inset: 0; opacity: 0.14; background-image: linear-gradient(rgba(250,245,18,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(250,245,18,0.35) 1px, transparent 1px); background-size: 72px 72px; mask-image: linear-gradient(to right, transparent, black 70%); }
+.hero-bg { background: linear-gradient(90deg, rgba(5,5,49,0.98) 0%, rgba(5,5,49,0.84) 48%, rgba(5,5,49,0.3) 100%), radial-gradient(circle at 82% 42%, rgba(36,105,255,0.28), transparent 30%), linear-gradient(135deg, #11131c 0%, #050531 100%); }
+.hero-bg::after { content: ''; position: absolute; inset: 0; opacity: 0.14; background-image: linear-gradient(rgba(107,155,255,0.32) 1px, transparent 1px), linear-gradient(90deg, rgba(107,155,255,0.32) 1px, transparent 1px), linear-gradient(to bottom, transparent 0%, transparent 54%, rgba(5,5,49,0.68) 100%); background-size: 72px 72px, 72px 72px, auto; mask-image: linear-gradient(to right, transparent, black 70%); }
 .hero-rule { left: 72%; background: linear-gradient(to bottom, transparent, rgba(250,245,18,0.6), transparent); }
 .hero-content { align-items: flex-start; margin: 9rem 0 0 9vw; max-width: 620px; }
 .hero-logo { margin-bottom: 1.1rem; }
