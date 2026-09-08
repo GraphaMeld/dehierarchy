@@ -185,6 +185,45 @@ document.querySelectorAll('.order-form').forEach(form => {
   });
 });
 
+// Boutique gallery
+document.querySelectorAll('.boutique-gallery').forEach(gallery => {
+  const images = Array.from(gallery.querySelectorAll('.boutique-gallery__image'));
+  const dots = Array.from(gallery.querySelectorAll('.boutique-gallery__dots button'));
+  const previous = gallery.querySelector('.boutique-gallery__button--prev');
+  const next = gallery.querySelector('.boutique-gallery__button--next');
+  let currentIndex = 0;
+
+  function showImage(index) {
+    currentIndex = (index + images.length) % images.length;
+    images.forEach((image, imageIndex) => image.classList.toggle('is-active', imageIndex === currentIndex));
+    dots.forEach((dot, dotIndex) => {
+      const isActive = dotIndex === currentIndex;
+      dot.classList.toggle('is-active', isActive);
+      dot.setAttribute('aria-selected', String(isActive));
+    });
+  }
+
+  previous?.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    showImage(currentIndex - 1);
+  });
+
+  next?.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    showImage(currentIndex + 1);
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      showImage(index);
+    });
+  });
+});
+
 // Hide header when footer is visible (dynamic)
 (function () {
   const footerEl = document.querySelector('footer');
