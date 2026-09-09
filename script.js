@@ -185,43 +185,113 @@ document.querySelectorAll('.order-form').forEach(form => {
   });
 });
 
-// Boutique gallery
-document.querySelectorAll('.boutique-gallery').forEach(gallery => {
-  const images = Array.from(gallery.querySelectorAll('.boutique-gallery__image'));
-  const dots = Array.from(gallery.querySelectorAll('.boutique-gallery__dots button'));
-  const previous = gallery.querySelector('.boutique-gallery__button--prev');
-  const next = gallery.querySelector('.boutique-gallery__button--next');
-  let currentIndex = 0;
+// Rotate the unframed catalogue stage through its featured objects.
+document.querySelectorAll('.hero-catalogue').forEach(catalogue => {
+  const items = Array.from(catalogue.querySelectorAll('.hero-catalogue__item'));
+  const counter = catalogue.querySelector('.hero-catalogue__counter');
+  let rotation = 0;
+  let timer;
+  let audioContext = null;
 
-  function showImage(index) {
-    currentIndex = (index + images.length) % images.length;
-    images.forEach((image, imageIndex) => image.classList.toggle('is-active', imageIndex === currentIndex));
-    dots.forEach((dot, dotIndex) => {
-      const isActive = dotIndex === currentIndex;
-      dot.classList.toggle('is-active', isActive);
-      dot.setAttribute('aria-selected', String(isActive));
-    });
+  function getAudioContext() {
+    const AudioCtor = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtor) return null;
+    if (!audioContext) audioContext = new AudioCtor();
+    if (audioContext.state === 'suspended') {
+      audioContext.resume().catch(() => {});
+    }
+    return audioContext;
   }
 
-  previous?.addEventListener('click', (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    showImage(currentIndex - 1);
-  });
+  function renderCatalogue() {
+    items.forEach((item, index) => {
+      const rawPosition = (index - rotation + items.length) % items.length;
+      const position = rawPosition > items.length / 2 ? rawPosition - items.length : rawPosition;
+      item.style.setProperty('--catalogue-position', position);
+      item.style.setProperty('--catalogue-offset', position);
+      item.style.zIndex = String(100 - Math.abs(position));
+    });
+    if (counter) counter.textContent = `${String(rotation + 1).padStart(2, '0')} — ${String(items.length).padStart(2, '0')}`;
+  }
 
-  next?.addEventListener('click', (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    showImage(currentIndex + 1);
-  });
+  function rotateCatalogue(step = 1) {
+    rotation = (rotation + step + items.length) % items.length;
+    renderCatalogue();
+  }
 
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', (event) => {
-      event.preventDefault();
+  function focusCatalogue(index) {
+    rotation = index;
+    renderCatalogue();
+  }
+
+  function playTap() {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    const now = ctx.currentTime;
+    const toneA = ctx.createOscillator();
+    const toneB = ctx.createOscillator();
+    const gain = ctx.createGain();
+    const filter = ctx.createBiquadFilter();
+
+    toneA.type = 'triangle';
+    toneB.type = 'sine';
+    toneA.frequency.setValueAtTime(220, now);
+    toneB.frequency.setValueAtTime(330, now);
+
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(1800, now);
+    filter.Q.value = 0.7;
+
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(0.12, now + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.2);
+
+    toneA.connect(filter);
+    toneB.connect(filter);
+    filter.connect(gain);
+    gain.connect(ctx.destination);
+
+    toneA.start(now);
+    toneB.start(now);
+    toneA.stop(now + 0.2);
+    toneB.stop(now + 0.18);
+  }
+
+  function startRotation() {
+    clearInterval(timer);
+    timer = setInterval(() => rotateCatalogue(), 3600);
+  }
+
+  rotateCatalogue(0);
+  catalogue.addEventListener('mouseenter', () => clearInterval(timer));
+  catalogue.addEventListener('mouseleave', startRotation);
+  items.forEach((item, index) => {
+    item.addEventListener('click', (event) => {
       event.stopPropagation();
-      showImage(index);
+      playTap();
+      focusCatalogue(index);
+      startRotation();
     });
   });
+  catalogue.addEventListener('click', (event) => {
+    if (event.target.closest('.hero-catalogue__item')) return;
+    playTap();
+    rotateCatalogue();
+    startRotation();
+  });
+  catalogue.addEventListener('pointermove', (event) => {
+    const bounds = catalogue.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+    catalogue.style.setProperty('--catalogue-tilt-x', `${y * -4}deg`);
+    catalogue.style.setProperty('--catalogue-tilt-y', `${x * 5}deg`);
+  });
+  catalogue.addEventListener('pointerleave', () => {
+    catalogue.style.setProperty('--catalogue-tilt-x', '0deg');
+    catalogue.style.setProperty('--catalogue-tilt-y', '0deg');
+  });
+  startRotation();
 });
 
 // Hide header when footer is visible (dynamic)
